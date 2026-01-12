@@ -24,6 +24,6 @@ def draw():
             line(A-Y, B-X, A-X, B+X)
             line(A-X, B+Y, A+X, B-Y)
             line(A-X, B+Y, A+Y, B+X)
-            line(A+X, B+X, A+X, B-Y)
+            line(A+Y, B+X, A+X, B-Y)
             R *= 0.94
             W += 0.05

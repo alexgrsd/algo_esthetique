@@ -18,7 +18,6 @@ def draw():
         strokeWeight(D)
         stroke(hue % 360, 100, 100)
         hue += 25
-
         N = N + D + 1
         X = X - D - 10
         Y = Y - D - 10
