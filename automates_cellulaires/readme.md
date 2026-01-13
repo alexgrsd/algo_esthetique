@@ -6,3 +6,5 @@ Pour la partie projet libre, nous avons choisi de faire un système de création
 Le programme est divisé en deux parties : 
 - La partie création de musique et logique qui a été gérée par les 3 autres membres du groupe. Celle-ci prend un automate de 12 cellules en ligne, et de crée un arrangement de notes au piano suivant une logique d'automate.
 - La seconde partie est la partie UI que j'ai réalisé. Elle se compose d'une interface simple composée d'une part de boutons pour créer la mélodie de base et lancer la simulation, ainsi qu'un jeu de la vie stylisé. Celui-ci tourne en continu grace a l'ajout de noise qui active des cases aléatoirement dans le jeu. Il réagit également aux notes jouées, ajoutat des lignes de cellules.
+
+A noter que nous avons utilisé l'IA pour nous aider a régler certains soucis précis, nous avons notemment du développer la partie génération de musique et UI indépendemment, elle nous a donc servi pour merge les codes.
