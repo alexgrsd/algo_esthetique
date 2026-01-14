@@ -1,4 +1,4 @@
-### Fractales - Jour 3
+# Fractales - Jour 3
 
 ## Projet libre
 
