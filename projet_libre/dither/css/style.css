@@ -1,0 +1,96 @@
+:root{
+  --bg:#0b0c10;
+  --panel:#12131a84;
+  --stroke:#2a2c36;
+  --text:#ffffff;
+  --muted:#ffffff;
+  --focus:#6d7cff;
+  --radius:12px;
+  --pad:14px;
+  --font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+html,body{ height:100%; }
+body{
+  margin:0;
+  overflow:hidden;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font);
+}
+
+canvas{ display:block; }
+
+/* HUD */
+.hud{
+  position:fixed;
+  top:16px; left:16px;
+  width:420px;
+  padding:var(--pad);
+  background:var(--panel);
+  border:1px solid var(--stroke);
+  border-radius:var(--radius);
+}
+
+/* Text */
+.ui{ font-family:var(--font); }
+.ui-label{ font-size:12px; color:var(--muted); margin:10px 0 6px; }
+.ui-value{ font-size:12px; color:var(--muted); margin-left:8px; }
+
+/* Controls */
+.ui-btn, .ui-select{
+  height:36px;
+  border-radius:10px;
+  border:1px solid var(--stroke);
+  background:#0f1016;
+  color:var(--text);
+  padding:0 12px;
+}
+
+.ui-btn{ cursor:pointer; }
+.ui-btn:hover, .ui-select:hover{ border-color:#3a3d4a; }
+.ui-btn:focus-visible, .ui-select:focus-visible{
+  outline:2px solid var(--focus);
+  outline-offset:2px;
+}
+
+/* Range */
+.ui-range{
+  width:260px;
+  background:transparent;
+}
+.ui-range::-webkit-slider-runnable-track{
+  height:6px;
+  background:#0f1016;
+  border:1px solid var(--stroke);
+  border-radius:999px;
+}
+.ui-range::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:16px; height:16px;
+  border-radius:50%;
+  background:var(--text);
+  border:1px solid var(--stroke);
+  margin-top:-6px;
+}
+.ui-range::-moz-range-track{
+  height:6px;
+  background:#0f1016;
+  border:1px solid var(--stroke);
+  border-radius:999px;
+}
+.ui-range::-moz-range-thumb{
+  width:16px; height:16px;
+  border-radius:50%;
+  background:var(--text);
+  border:1px solid var(--stroke);
+}
+
+/* Checkbox */
+.ui-check{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:13px;
+  color:var(--muted);
+}
