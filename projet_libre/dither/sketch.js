@@ -45,7 +45,6 @@ function draw() {
   image(postGfx, 0, 0);
 }
 
-// ---------- UI events ----------
 const rebuildDither = debounce(() => {
   if (App.imgOriginal) App.imgDither = ditherImage(App.imgOriginal, App.ditherOpts);
 }, 50);
@@ -74,7 +73,6 @@ function onUIChange(type) {
   }
 }
 
-// ---------- helpers ----------
 function resizeBuffers() {
   gfx = createGraphics(windowWidth, windowHeight);
   postGfx = createGraphics(windowWidth, windowHeight);

@@ -13,6 +13,7 @@ function glitchScanlines(g, amount=6) {
   amount = floor(amount);
   if (amount <= 0) return;
 
+  // on décale des bandes horizontales au hasard (plutot simple)
   const h = g.height;
   for (let k=0; k<amount; k++) {
     const y = floor(random(h));
@@ -27,6 +28,7 @@ function rgbShift(g, amount=2) {
   amount = floor(amount);
   if (amount <= 0) return;
 
+  // copie temporaire
   const tmp = createGraphics(g.width, g.height);
   tmp.image(g, 0, 0);
   tmp.loadPixels();
@@ -35,12 +37,14 @@ function rgbShift(g, amount=2) {
   const w = g.width, h = g.height;
   const p = g.pixels, s = tmp.pixels;
 
+  // échantillonage
   const sample = (x, y) => {
     x = constrain(x, 0, w-1);
     y = constrain(y, 0, h-1);
     return (y*w + x)*4;
   };
 
+  // on fait le shift
   for (let y=0; y<h; y++) for (let x=0; x<w; x++) {
     const i = (y*w + x)*4;
     const ir = sample(x + amount, y);

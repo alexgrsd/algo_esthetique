@@ -1,14 +1,14 @@
 function ditherImage(src, opts) {
   const { pixelSize, algo } = opts;
 
-  // 1) downscale pour pixeliser + accélérer
+  // 1) downscale
   const w = max(1, floor(src.width / pixelSize));
   const h = max(1, floor(src.height / pixelSize));
   const small = createImage(w, h);
   small.copy(src, 0, 0, src.width, src.height, 0, 0, w, h);
   small.loadPixels();
 
-  // 2) dither sur small
+  // 2) dither
   if (algo === "THRESH") ditherThreshold(small, opts.threshold);
   else if (algo === "BAYER") ditherBayer(small, opts.bayerN, opts.threshold);
   else if (algo === "ATKINSON") ditherAtkinson(small);
@@ -16,7 +16,7 @@ function ditherImage(src, opts) {
 
   small.updatePixels();
 
-  // 3) upscale (sans smooth) vers une image finale
+  // 3) upscale
   const out = createImage(src.width, src.height);
   out.copy(small, 0, 0, w, h, 0, 0, src.width, src.height);
   return out;
@@ -28,11 +28,14 @@ function lumAt(pix, i) {
   return (r + g + b) / 3;
 }
 
+// pour mettre en n&b
 function setBW(pix, i, v) {
   pix[i] = pix[i+1] = pix[i+2] = v;
   pix[i+3] = 255;
 }
 
+
+// threshold basique
 function ditherThreshold(im, thr=128) {
   const p = im.pixels;
   for (let i = 0; i < p.length; i += 4) {
@@ -42,7 +45,7 @@ function ditherThreshold(im, thr=128) {
 }
 
 function ditherBayer(im, n=4, thr=128) {
-  // matrice Bayer 4x4 (tu peux ajouter 8x8)
+  // matrice Bayer 4x4
   const b4 = [
     [ 0,  8,  2, 10],
     [12,  4, 14,  6],

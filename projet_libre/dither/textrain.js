@@ -71,16 +71,20 @@ function toSentences(t) {
   return t.match(/[^.!?]+[.!?]+/g)?.map(s => s.trim()) || [t];
 }
 
+// pour faire une grille de masque à partir d'une image en n&b
 function buildMaskGrid(img, { CELL, LH }, W, H) {
   const cols = floor(W / CELL), rows = floor(H / LH);
   img.loadPixels();
 
+  // pour centrer l'image
   const sc = min(W / img.width, H / img.height);
   const ox = (W - img.width * sc) * 0.5;
   const oy = (H - img.height * sc) * 0.5;
 
+  // construire la grille avec échantillonage
   const grid = Array.from({ length: rows }, () => Array(cols).fill(false));
 
+  // remplir la grille avec un threshold à 127 (pas super important le 127 vu que c'est du n&b)
   for (let r = 0; r < rows; r++) {
     const y = r * LH + LH * 0.5;
     for (let c = 0; c < cols; c++) {
